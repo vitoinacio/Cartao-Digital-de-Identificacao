@@ -1,0 +1,105 @@
+:host {
+  --accent-1: hsl(200 90% 55%);
+  --accent-2: hsl(160 70% 48%);
+  --text-strong: hsl(220 20% 15%);
+  --text-muted: hsl(220 10% 45%);
+  --surface: #ffffff;
+  --surface-2: #f7f8fb;
+}
+
+ion-toolbar {
+  --background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  --color: #fff;
+  --border-width: 0;
+  ion-title { font-weight: 700; letter-spacing: .2px; }
+}
+
+ion-content.card-page {
+  --background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+  position: relative; min-height: 100%;
+}
+
+.bg-blobs {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(700px 700px at 10% -10%, color-mix(in hsl, var(--accent-1) 20%, transparent), transparent 60%),
+    radial-gradient(600px 600px at 100% 0%, color-mix(in hsl, var(--accent-2) 15%, transparent), transparent 55%);
+  filter: saturate(1.05);
+  animation: floatBg 18s ease-in-out infinite alternate;
+}
+@keyframes floatBg {
+  from { transform: translateY(0) scale(1); opacity: .9; }
+  to   { transform: translateY(-8px) scale(1.02); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .bg-blobs { animation: none; } }
+
+.wrap {
+  padding: clamp(16px, 7vh, 56px) 16px 24px;
+  display: grid; place-items: center;
+}
+
+.profile-card {
+  --background: rgba(255,255,255,.82);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(27,38,53,.12);
+  width: 100%; max-width: clamp(320px, 92vw, 560px);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.profile-card:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(27,38,53,.18); }
+
+ion-card-header { text-align: center; padding: clamp(22px, 5vw, 28px) clamp(18px, 4vw, 24px) 12px; }
+
+.name {
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  line-height: 1.25;
+  color: var(--text-strong);
+  margin-top: 2px;
+  letter-spacing: .2px;
+  font-weight: 700;
+}
+.subtitle { color: color-mix(in hsl, var(--accent-1), #000 20%); font-weight: 600; }
+
+ion-card-content {
+  padding: 0 clamp(16px, 4vw, 24px) clamp(18px, 4vw, 28px);
+  display: grid; gap: 12px;
+  text-align: center;
+}
+
+.lead {
+  font-size: clamp(.95rem, 2.2vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--text-strong);
+}
+
+.body {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.actions { margin-top: clamp(12px, 3vw, 18px); display: grid; }
+.btn-back {
+  --border-radius: 12px;
+  --color: color-mix(in hsl, var(--accent-1), #000 15%);
+  --border-color: color-mix(in hsl, var(--accent-1), #000 15%);
+  font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    --text-strong: hsl(220 15% 92%);
+    --text-muted: hsl(220 10% 70%);
+  }
+  ion-content.card-page {
+    --background: linear-gradient(180deg, hsl(220 20% 8%), hsl(220 20% 10%));
+  }
+  .bg-blobs { opacity: .8; filter: saturate(1.1); }
+  .profile-card {
+    --background: rgba(16,18,22,.55);
+    border-color: rgba(255,255,255,.06);
+    box-shadow: 0 12px 34px rgba(0,0,0,.45);
+  }
+  .subtitle { color: color-mix(in hsl, var(--accent-2), #fff 35%); }
+}

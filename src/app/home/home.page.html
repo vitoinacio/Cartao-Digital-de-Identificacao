@@ -1,0 +1,36 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>Cartão Digital</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="card-page">
+  <!-- Fundo com blobs suaves -->
+  <div class="bg-blobs" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <div class="avatar-ring">
+          <img alt="Foto de perfil" src="assets/perfil.jpg" />
+        </div>
+
+        <ion-card-title class="name">Victor Hugo Inacio de Oliveira</ion-card-title>
+        <ion-card-subtitle class="subtitle">Cartão Digital</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-label>Codigo da Turma</ion-label>
+        <ion-chip class="chip-code" mode="md">
+          <ion-icon name="qr-code-outline" aria-hidden="true"></ion-icon>
+          <ion-label>2025-2-PAS23103-CG-ADS0301N</ion-label>
+        </ion-chip>
+
+        <div class="actions">
+          <ion-button expand="block" class="btn-primary" routerLink="/about">Sobre</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
